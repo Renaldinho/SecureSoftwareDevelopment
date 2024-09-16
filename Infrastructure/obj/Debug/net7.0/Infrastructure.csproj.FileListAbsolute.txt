@@ -1,0 +1,17 @@
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Application.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Core.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Application.pdb
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Core.pdb
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll

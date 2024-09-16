@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  
+  api:
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    ports:
+      - 8000:80
+    networks: 
+      service-network:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80;http://+:443
+ 
+ 
+networks:
+  service-network:
+    driver: bridge 
