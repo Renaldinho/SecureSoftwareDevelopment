@@ -16,3 +16,5 @@ C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\De
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
