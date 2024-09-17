@@ -8,10 +8,12 @@ namespace Application.Services;
 public class ArticleService : IArticleService
 {
     private readonly IArticleRepo _articleRepository;
+    private readonly IUserRepo _userRepo;
 
-    public ArticleService(IArticleRepo articleRepository)
+    public ArticleService(IArticleRepo articleRepository, IUserRepo userRepo)
     {
         _articleRepository = articleRepository;
+        _userRepo = userRepo;
     }
 
     public async Task<IEnumerable<ArticleDTO>> GetAllArticlesAsync()
@@ -43,16 +45,27 @@ public class ArticleService : IArticleService
 
     public async Task<ArticleDTO> AddArticleAsync(ArticleDTO articleDto)
     {
+        // Check if the author exists
+        var userExists = await _userRepo.GetByIdAsync(articleDto.AuthorId) != null;
+        if (!userExists)
+        {
+            throw new KeyNotFoundException("Author not found. An article must have a valid author.");
+        }
+
+        // Create and save the new article
         var article = new Article
         {
             Title = articleDto.Title,
             Content = articleDto.Content,
-            AuthorId = articleDto.AuthorId
+            AuthorId = articleDto.AuthorId,
+            CreatedAt = DateTime.UtcNow
         };
         await _articleRepository.AddAsync(article);
-        articleDto.ArticleId = article.ArticleId;
+        articleDto.ArticleId = article.ArticleId;  // Reflect the ID back to the DTO after saving
+
         return articleDto;
     }
+
 
     public async Task UpdateArticleAsync(ArticleDTO articleDto)
     {
