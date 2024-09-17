@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using System.Security.Claims;
+using Application.Interfaces;
 using Auth.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "Subscriber")]
+    [Authorize(Roles = "Subscriber, Writer, Editor")]
     public async Task<ActionResult<CommentDTO>> PostComment([FromBody] CommentDTO commentDto)
     {
         var newComment = await _commentService.AddCommentAsync(commentDto);
@@ -43,22 +44,52 @@ public class CommentController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [Authorize(Policy = "CanManageComments")]
-    public async Task<IActionResult> UpdateComment(int id, [FromBody] CommentDTO commentDto)
+    [Authorize]  // Ensure the user is logged in
+    public async Task<IActionResult> EditComment(int id, [FromBody] CommentDTO commentDto)
     {
-        if (id != commentDto.CommentId)
+        var comment = await _commentService.GetCommentByIdAsync(id);
+        if (comment == null)
         {
-            return BadRequest();
+            return NotFound();
         }
-        await _commentService.UpdateCommentAsync(commentDto);
-        return NoContent();
+
+        // Get the current user's ID
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        // Check if the current user is the author of the comment or an editor
+        if (comment.UserId.ToString() == userId || User.IsInRole("Editor"))
+        {
+            await _commentService.UpdateCommentAsync(commentDto);
+            return Ok(commentDto);
+        }
+        else
+        {
+            return Forbid("You do not have permission to edit this comment.");
+        }
     }
 
     [HttpDelete("{id}")]
-    [Authorize(Policy = "CanManageComments")]
+    [Authorize]  // Ensure the user is logged in
     public async Task<IActionResult> DeleteComment(int id)
     {
-        await _commentService.DeleteCommentAsync(id);
-        return NoContent();
+        var comment = await _commentService.GetCommentByIdAsync(id);
+        if (comment == null)
+        {
+            return NotFound();
+        }
+
+        // Get the current user's ID
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        // Check if the current user is the author of the comment or an editor
+        if (comment.UserId.ToString() == userId || User.IsInRole("Editor"))
+        {
+            await _commentService.DeleteCommentAsync(id);
+            return NoContent();
+        }
+        else
+        {
+            return Forbid("You do not have permission to delete this comment.");
+        }
     }
 }

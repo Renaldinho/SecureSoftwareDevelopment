@@ -38,7 +38,7 @@ public class ArticlesController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "Journalist,Writer")]
+    [Authorize(Roles = "Editor,Writer")]
     public async Task<ActionResult<ArticleDTO>> PostArticle([FromBody] ArticleDTO articleDto)
     {
         var newArticle = await _articleService.AddArticleAsync(articleDto);
@@ -71,7 +71,7 @@ public class ArticlesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    [Authorize(Roles = "Journalist,Writer")]
+    [Authorize(Roles = "Editor,Writer")]
     public async Task<IActionResult> DeleteArticle(int id)
     {
         var article = await _articleService.GetArticleByIdAsync(id);
