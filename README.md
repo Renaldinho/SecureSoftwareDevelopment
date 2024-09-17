@@ -1,3 +1,11 @@
+
+Build commands for docker container
+
+```
+docker-compose up --build
+```
+Swagger will be available locally at http://localhost:8000/swagger/index.html
+
 ![image](https://github.com/user-attachments/assets/abd22b94-464d-49da-814b-cd3aa033d4e0)
 
 So we start by creating our own user. We can choose between the 4 role types. ![image](https://github.com/user-attachments/assets/c906f0c4-fde4-408a-8a74-8ae5d6caf80a)
