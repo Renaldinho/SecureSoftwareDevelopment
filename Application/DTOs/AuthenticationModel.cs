@@ -12,4 +12,7 @@ public class AuthenticationModel
 
     [Required(ErrorMessage = "Username is required")]
     public string Username { get; set; }
+    
+    public string Role { get; set; }  // Role as a string or enum, depending on your setup
+
 }

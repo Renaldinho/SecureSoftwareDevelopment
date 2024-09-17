@@ -82,6 +82,9 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("BLOB");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
                     b.Property<byte[]>("Salt")
                         .IsRequired()
                         .HasColumnType("BLOB");

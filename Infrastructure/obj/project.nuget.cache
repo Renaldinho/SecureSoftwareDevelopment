@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OQdp5MNIROXD3tnKjE/aVbC+/WjPmFKVsFN6hI5bwBf8AJdBpyFS+SVM4RB4DMDx32Mx31+aViv4biQsqEPDBA==",
+  "dgSpecHash": "vBA32mbrzbF5Uk5LmqXilWBWCPO3vDhXgWZey2iHbRJpGyLR2y2Qppd6BnI2juDRufdm7Tc5GpH1sVcZ8RGSUw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruger\\Documents\\GitHub\\SecureSoftwareDevelopment\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruger\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.16\\microsoft.aspnetcore.authentication.jwtbearer.7.0.16.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.16\\microsoft.data.sqlite.core.7.0.16.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.16\\microsoft.entityframeworkcore.abstractions.7.0.16.nupkg.sha512",
@@ -28,6 +29,8 @@
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.0.2\\microsoft.identitymodel.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.0.2\\microsoft.identitymodel.jsonwebtokens.8.0.2.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.logging\\8.0.2\\microsoft.identitymodel.logging.8.0.2.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.35.0\\microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.35.0\\microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.0.2\\microsoft.identitymodel.tokens.8.0.2.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",

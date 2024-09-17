@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Auth.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.controllers;
@@ -34,6 +35,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Subscriber")]
     public async Task<ActionResult<CommentDTO>> PostComment([FromBody] CommentDTO commentDto)
     {
         var newComment = await _commentService.AddCommentAsync(commentDto);
@@ -41,6 +43,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Policy = "CanManageComments")]
     public async Task<IActionResult> UpdateComment(int id, [FromBody] CommentDTO commentDto)
     {
         if (id != commentDto.CommentId)
@@ -52,6 +55,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Policy = "CanManageComments")]
     public async Task<IActionResult> DeleteComment(int id)
     {
         await _commentService.DeleteCommentAsync(id);

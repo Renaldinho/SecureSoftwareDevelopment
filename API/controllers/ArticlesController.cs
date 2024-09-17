@@ -1,6 +1,8 @@
-﻿using Application.Interfaces;
+﻿using System.Security.Claims;
+using Application.Interfaces;
 using Auth.Application.DTOs;
 using Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.controllers;
@@ -10,12 +12,13 @@ namespace API.controllers;
 public class ArticlesController : ControllerBase
 {
     private readonly IArticleService _articleService;
+    private readonly IAuthorizationService _authorizationService;
 
-    public ArticlesController(IArticleService articleService)
+    public ArticlesController(IArticleService articleService, IAuthorizationService authorizationService)
     {
         _articleService = articleService;
+        _authorizationService = authorizationService;
     }
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ArticleDTO>>> GetArticles()
     {
@@ -35,6 +38,7 @@ public class ArticlesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Journalist,Writer")]
     public async Task<ActionResult<ArticleDTO>> PostArticle([FromBody] ArticleDTO articleDto)
     {
         var newArticle = await _articleService.AddArticleAsync(articleDto);
@@ -42,20 +46,52 @@ public class ArticlesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateArticle(int id, [FromBody] ArticleDTO articleDto)
+    public async Task<IActionResult> EditArticle(int id, [FromBody] ArticleDTO articleDto)
     {
-        if (id != articleDto.ArticleId)
+        var article = await _articleService.GetArticleByIdAsync(id);
+        if (article == null)
         {
-            return BadRequest();
+            return NotFound();
         }
-        await _articleService.UpdateArticleAsync(articleDto);
-        return NoContent();
+
+        // Get the current user's ID
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        // Check if the current user is the author of the article or an editor
+        if (article.AuthorId.ToString() == userId || User.IsInRole("Editor"))
+        {
+            // Assuming a method exists to update an article
+            await _articleService.UpdateArticleAsync(articleDto);
+            return Ok(articleDto);
+        }
+        else
+        {
+            return Forbid("You do not have permission to edit this article.");
+        }
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Journalist,Writer")]
     public async Task<IActionResult> DeleteArticle(int id)
     {
-        await _articleService.DeleteArticleAsync(id);
-        return NoContent();
+        var article = await _articleService.GetArticleByIdAsync(id);
+        if (article == null)
+        {
+            return NotFound();
+        }
+
+        // Get the current user's ID
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        // Check if the current user is the author of the article or an editor
+        if (article.AuthorId.ToString() == userId || User.IsInRole("Editor"))
+        {
+            await _articleService.DeleteArticleAsync(id);
+            return NoContent();
+        }
+        else
+        {
+            return Forbid("You do not have permission to delete this article.");
+        }
     }
 }

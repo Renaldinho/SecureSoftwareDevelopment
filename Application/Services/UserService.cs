@@ -29,6 +29,7 @@ public class UserService: IUserService
             Username = credentials.Username,
             PasswordHash = passwordHash,
             Salt = passwordSalt,
+            Role = Enum.Parse<UserRole>(credentials.Role)
         };
 
         await _userRepo.AddAsync(user);
