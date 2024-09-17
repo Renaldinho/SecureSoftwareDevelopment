@@ -1,12 +1,12 @@
-﻿using Core.Entities;
+﻿using Auth.Application.DTOs;
 
 namespace Application.Interfaces;
 
 public interface ICommentService
 {
-    Task<IEnumerable<Comment>> GetAllCommentsAsync();
-    Task<Comment> GetCommentByIdAsync(int id);
-    Task AddCommentAsync(Comment comment);
-    Task UpdateCommentAsync(Comment comment);
+    Task<IEnumerable<CommentDTO>> GetAllCommentsAsync();
+    Task<CommentDTO> GetCommentByIdAsync(int id);
+    Task<CommentDTO> AddCommentAsync(CommentDTO commentDto);
+    Task UpdateCommentAsync(CommentDTO commentDto);
     Task DeleteCommentAsync(int id);
 }

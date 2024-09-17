@@ -5,9 +5,9 @@ namespace Application.Interfaces;
 
 public interface IArticleService
 {
-    Task<IEnumerable<Article>> GetAllArticlesAsync();
-    Task<Article> GetArticleByIdAsync(int id);
-    Task<ArticleDTO> AddArticleAsync(ArticleDTO article);
-    Task UpdateArticleAsync(Article article);
+    Task<IEnumerable<ArticleDTO>> GetAllArticlesAsync();
+    Task<ArticleDTO> GetArticleByIdAsync(int id);
+    Task<ArticleDTO> AddArticleAsync(ArticleDTO articleDto);
+    Task UpdateArticleAsync(ArticleDTO articleDto);
     Task DeleteArticleAsync(int id);
 }

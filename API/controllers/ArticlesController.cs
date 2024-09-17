@@ -16,16 +16,15 @@ public class ArticlesController : ControllerBase
         _articleService = articleService;
     }
 
-    // GET: api/Articles
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
+    public async Task<ActionResult<IEnumerable<ArticleDTO>>> GetArticles()
     {
-        return Ok(await _articleService.GetAllArticlesAsync());
+        var articles = await _articleService.GetAllArticlesAsync();
+        return Ok(articles);
     }
 
-    // GET: api/Articles/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Article>> GetArticle(int id)
+    public async Task<ActionResult<ArticleDTO>> GetArticle(int id)
     {
         var article = await _articleService.GetArticleByIdAsync(id);
         if (article == null)
@@ -35,37 +34,27 @@ public class ArticlesController : ControllerBase
         return Ok(article);
     }
 
-    // POST: api/Articles
     [HttpPost]
-    public async Task<ActionResult<Article>> PostArticle([FromBody] ArticleDTO article)
+    public async Task<ActionResult<ArticleDTO>> PostArticle([FromBody] ArticleDTO articleDto)
     {
-        await _articleService.AddArticleAsync(article);
-        return CreatedAtAction(nameof(GetArticle), new { id = article.ArticleId }, article);
+        var newArticle = await _articleService.AddArticleAsync(articleDto);
+        return CreatedAtAction(nameof(GetArticle), new { id = newArticle.ArticleId }, newArticle);
     }
 
-    // PUT: api/Articles/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutArticle(int id, [FromBody] Article article)
+    public async Task<IActionResult> UpdateArticle(int id, [FromBody] ArticleDTO articleDto)
     {
-        if (id != article.ArticleId)
+        if (id != articleDto.ArticleId)
         {
             return BadRequest();
         }
-
-        await _articleService.UpdateArticleAsync(article);
+        await _articleService.UpdateArticleAsync(articleDto);
         return NoContent();
     }
 
-    // DELETE: api/Articles/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteArticle(int id)
     {
-        var article = await _articleService.GetArticleByIdAsync(id);
-        if (article == null)
-        {
-            return NotFound();
-        }
-
         await _articleService.DeleteArticleAsync(id);
         return NoContent();
     }

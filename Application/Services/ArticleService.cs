@@ -14,41 +14,59 @@ public class ArticleService : IArticleService
         _articleRepository = articleRepository;
     }
 
-    public async Task<IEnumerable<Article>> GetAllArticlesAsync()
+    public async Task<IEnumerable<ArticleDTO>> GetAllArticlesAsync()
     {
-        return await _articleRepository.GetAllAsync();
+        var articles = await _articleRepository.GetAllAsync();
+        return articles.Select(a => new ArticleDTO
+        {
+            ArticleId = a.ArticleId,
+            Title = a.Title,
+            Content = a.Content,
+            AuthorId = a.AuthorId,
+            CreatedAt = a.CreatedAt
+        });
     }
 
-    public async Task<Article> GetArticleByIdAsync(int id)
+    public async Task<ArticleDTO> GetArticleByIdAsync(int id)
     {
         var article = await _articleRepository.GetByIdAsync(id);
-        if (article == null)
+        if (article == null) return null;
+        return new ArticleDTO
         {
-        }
-        return article;
+            ArticleId = article.ArticleId,
+            Title = article.Title,
+            Content = article.Content,
+            AuthorId = article.AuthorId,
+            CreatedAt = article.CreatedAt
+        };
     }
 
-    public Task<ArticleDTO> AddArticleAsync(ArticleDTO article)
+    public async Task<ArticleDTO> AddArticleAsync(ArticleDTO articleDto)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task AddArticleAsync(Article article)
-    {
+        var article = new Article
+        {
+            Title = articleDto.Title,
+            Content = articleDto.Content,
+            AuthorId = articleDto.AuthorId
+        };
         await _articleRepository.AddAsync(article);
+        articleDto.ArticleId = article.ArticleId;
+        return articleDto;
     }
 
-    public async Task UpdateArticleAsync(Article article)
+    public async Task UpdateArticleAsync(ArticleDTO articleDto)
     {
-        await _articleRepository.UpdateAsync(article);
+        var article = await _articleRepository.GetByIdAsync(articleDto.ArticleId);
+        if (article != null)
+        {
+            article.Title = articleDto.Title;
+            article.Content = articleDto.Content;
+            await _articleRepository.UpdateAsync(article);
+        }
     }
 
     public async Task DeleteArticleAsync(int id)
     {
-        var article = await _articleRepository.GetByIdAsync(id);
-        if (article != null)
-        {
-            await _articleRepository.DeleteAsync(id);
-        }
+        await _articleRepository.DeleteAsync(id);
     }
 }
