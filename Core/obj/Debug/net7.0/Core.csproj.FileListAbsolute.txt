@@ -9,3 +9,4 @@ C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Core\obj\Debug\net7.0
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Core\obj\Debug\net7.0\refint\Core.dll
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Core\obj\Debug\net7.0\Core.pdb
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Core\obj\Debug\net7.0\ref\Core.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Core\obj\Debug\net7.0\Core.sourcelink.json

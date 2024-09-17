@@ -8,4 +8,5 @@ public class Article
     public int AuthorId { get; set; }
     public User Author { get; set; }
     public DateTime CreatedAt { get; set; }
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 }

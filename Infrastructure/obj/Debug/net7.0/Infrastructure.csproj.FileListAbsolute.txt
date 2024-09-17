@@ -15,3 +15,4 @@ C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\De
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Users\Bruger\Documents\GitHub\SecureSoftwareDevelopment\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json

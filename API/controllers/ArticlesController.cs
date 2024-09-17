@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Auth.Application.DTOs;
 using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,7 +37,7 @@ public class ArticlesController : ControllerBase
 
     // POST: api/Articles
     [HttpPost]
-    public async Task<ActionResult<Article>> PostArticle([FromBody] Article article)
+    public async Task<ActionResult<Article>> PostArticle([FromBody] ArticleDTO article)
     {
         await _articleService.AddArticleAsync(article);
         return CreatedAtAction(nameof(GetArticle), new { id = article.ArticleId }, article);
