@@ -326,6 +326,10 @@
               "target": "Package",
               "version": "[7.0.16, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.16, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[9.0.0-rc.1.24431.7, )"

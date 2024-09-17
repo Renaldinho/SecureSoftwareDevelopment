@@ -9,6 +9,11 @@ public class DatabaseContext: DbContext
     {
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite("Data Source=database.db", b => b.MigrationsAssembly("API"));
+    }
+
     public DbSet<Article> Articles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<User> Users { get; set; } // If you also manage users within the same context

@@ -18,8 +18,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddDbContext<DatabaseContext>(options => 
-    options.UseSqlite("Data Source=database.db"));
+builder.Services.AddDbContext<DatabaseContext>();
 Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
 Infrastructure.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 

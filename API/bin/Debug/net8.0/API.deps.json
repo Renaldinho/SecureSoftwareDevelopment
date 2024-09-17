@@ -871,6 +871,7 @@
           "Application": "1.0.0",
           "Core": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.16",
+          "Microsoft.EntityFrameworkCore.Sqlite": "7.0.16",
           "Microsoft.Extensions.DependencyInjection": "9.0.0-rc.1.24431.7"
         },
         "runtime": {
