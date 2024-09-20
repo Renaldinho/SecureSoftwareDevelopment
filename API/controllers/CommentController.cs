@@ -16,7 +16,8 @@ public class CommentController : ControllerBase
     {
         _commentService = commentService;
     }
-
+    
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CommentDTO>>> GetComments()
     {
@@ -24,6 +25,7 @@ public class CommentController : ControllerBase
         return Ok(comments);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<CommentDTO>> GetComment(int id)
     {
@@ -55,7 +57,7 @@ public class CommentController : ControllerBase
 
         // Get the current user's ID
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
+            // this should have refrence to the article id 
         // Check if the current user is the author of the comment or an editor
         if (comment.UserId.ToString() == userId || User.IsInRole("Editor"))
         {

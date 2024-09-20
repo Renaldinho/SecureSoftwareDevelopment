@@ -19,6 +19,8 @@ public class ArticlesController : ControllerBase
         _articleService = articleService;
         _authorizationService = authorizationService;
     }
+    
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ArticleDTO>>> GetArticles()
     {
@@ -26,6 +28,7 @@ public class ArticlesController : ControllerBase
         return Ok(articles);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     public async Task<ActionResult<ArticleDTO>> GetArticle(int id)
     {
@@ -44,7 +47,8 @@ public class ArticlesController : ControllerBase
         var newArticle = await _articleService.AddArticleAsync(articleDto);
         return CreatedAtAction(nameof(GetArticle), new { id = newArticle.ArticleId }, newArticle);
     }
-
+    
+    [Authorize(Roles = "Editor,Writer")]
     [HttpPut("{id}")]
     public async Task<IActionResult> EditArticle(int id, [FromBody] ArticleDTO articleDto)
     {
